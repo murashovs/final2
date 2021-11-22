@@ -36,7 +36,7 @@
           cidr_ip: 0.0.0.0/0
 
   - name: Create Build nstance
-    ec2_instance:
+    community.aws.ec2_instance:
       key_name: '{{ keyname }}'
       instance_type: '{{ instance-type }}'
       image_id: ami-0bd9c26722573e69b
