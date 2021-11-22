@@ -1,5 +1,5 @@
 ---
-keyname: keypair1
+keyname: keypair123
 region: eu-north-1
 security-group: secgroup1
 sg-decsription: new deploy

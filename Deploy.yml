@@ -17,7 +17,7 @@
       #state: absent
     register: ec2_key_result
 
-  - name: Save
+  - name: Save kaypair
     copy:
       content: "{{ ec2_key_result.key.private_key }}"
       dest: /root/.ssh/'{{ keyname }}'.pem
