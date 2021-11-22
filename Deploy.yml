@@ -27,7 +27,7 @@
   - name: Create new security group
     ec2_group:
       name: '{{ sgroup }}'
-      description: '{{ sg-decsription }}'
+      description: '{{ sgdecsription }}'
       region: '{{ region }}'
       rules:
         - proto: tcp

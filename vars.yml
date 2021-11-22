@@ -2,5 +2,5 @@
 keyname: keypair123
 region: eu-north-1
 sgroup: secgroup1
-sg-decsription: new deploy
+sgdecsription: new deploy
 
