@@ -1,7 +1,7 @@
 ---
 - name: main
   vars_files:
-    - var.yml
+    - var1.yml
 
 - name: create aws environment
   import_tasks: makeaws.yml
