@@ -1,0 +1,52 @@
+---
+
+- name: Make war from sources
+  hosts: builder
+  become: yes
+  become_user: root
+
+  tasks:
+    - name: Checkout pkgs is presents
+      apt:
+        pkg:
+          - docker.io
+          - default-jdk
+          - maven
+          - python3-pip
+        state: present
+        update_cache: yes
+
+    - name: Checkout docker (phyton)
+      pip:
+        name: docker
+        state: present
+
+    - name: Clone git
+      git:
+        repo: https://github.com/boxfuse/boxfuse-sample-java-war-hello
+        dest: /home/ubuntu/src
+
+    - name: Build app
+      shell: mvn package
+      args:
+        chdir: /home/ubuntu/src
+
+    - name: Login DockerHub
+      docker_login:
+        username: '{{ dockerhub_username }}'
+        password: '{{ dockerhub_password }}'
+
+    - name: Synchronize Dockerfile.
+      synchronize:
+        src: Dockerfile
+        dest: /home/ubuntu/src/target
+
+    - name: Make docker image
+      docker_image:
+        name: '{{ project_name }}'
+        push: yes
+        build:
+          path: /home/ubuntu/src/target
+        tag: latest
+        force_tag: yes
+        source: build
