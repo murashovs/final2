@@ -29,6 +29,6 @@
       docker_container:
         name: webapp
         state: started
-        image: murashovs/web:latest
+        image: '{{ project_name }}:latest'
         ports:
           - "8080:8080"

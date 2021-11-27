@@ -7,6 +7,18 @@
   gather_facts: False
   tasks:
 
+    - name: create VPC
+      ec2_vpc_net:
+        name: "{{ project_name }}_vpc"
+        cidr_block: "{{ vpc_cidr }}"
+        region: "{{ region }}"
+        state: present
+        aws_access_key: "{{ aws_access_key }}"
+        aws_secret_key: "{{ aws_secret_key }}"
+        tags:
+          project_name: "{{ project_name }}"
+      register: vpc
+
     - name: associate subnet to the VPC
       ec2_vpc_subnet:
         vpc_id: "{{ vpc.vpc.id }}"
@@ -69,7 +81,7 @@
 
     - name: Create Security Group
       ec2_group:
-        name: "{{ securitygroup_name }}"
+        name: "{{ project_name }}_group"
         description: DMZ SG
         vpc_id: "{{ vpc.vpc.id }}"
         region: "{{ region }}"

@@ -1,0 +1,14 @@
+---
+
+aws_access_key:
+aws_secret_key:
+project_name:
+region:
+vpc_cidr:
+subnet_az:
+subnet_cidr:
+ami:
+instant_type:
+git_repo:
+dockerhub_username:
+dockerhub_password:

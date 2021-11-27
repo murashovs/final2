@@ -23,7 +23,7 @@
 
     - name: Clone git
       git:
-        repo: https://github.com/boxfuse/boxfuse-sample-java-war-hello
+        repo: '{{ git_repo }}'
         dest: /home/ubuntu/src
 
     - name: Build app
