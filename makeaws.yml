@@ -96,7 +96,7 @@
       register: security_group
 
     - name: Create APP builder
-      ec2:
+      ec2_instance:
         image: '{{ ami }}'
         wait: yes
         instance_type: '{{ instant_type }}'
