@@ -71,7 +71,7 @@
       register: keypair
 
     - name: Copy EC2 Private Key
-      copy: content="{{ keypair.key.private_key }}" dest={{ ec2_key_directory }}{{ code_name }}_ec2_keypair.pem
+      copy: content="{{ keypair.key.private_key }}" dest={{ ec2_key_directory }}{{ project_name }}_ec2_keypair.pem
       when: keypair.changed == true
 
     - name: Create Security Group

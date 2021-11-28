@@ -12,3 +12,4 @@ instant_type:
 git_repo:
 dockerhub_username:
 dockerhub_password:
+ec2_key_directory:
