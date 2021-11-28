@@ -119,12 +119,12 @@
       register: ec21
 
     - name: Add Build instance to host group
-        add_host:
-          hostname: "{{ item.public_ip_address }}"
-          groups: Builders
-          ansible_ssh_user: ubuntu
-          ansible_ssh_private_key_file: { { ec2_key_directory } }{ { code_name } }_ec2_keypair.pem
-        with_items: "{{ ec21.instances }}"
+      add_host:
+        hostname: "{{ item.public_ip_address }}"
+        groups: Builders
+        ansible_ssh_user: ubuntu
+        ansible_ssh_private_key_file: { { ec2_key_directory } }{ { code_name } }_ec2_keypair.pem
+      with_items: "{{ ec21.instances }}"
 
     - name: Create webserver
       ec2:
@@ -144,11 +144,11 @@
         aws_secret_key: "{{ aws_secret_key }}"
       register: ec22
 
-        - name: Add Build instance to host group
-          add_host:
-            hostname: "{{ item.public_ip_address }}"
-            groups: web
-            ansible_ssh_user: ubuntu
-            ansible_ssh_private_key_file: { { ec2_key_directory } }{ { code_name } }_ec2_keypair.pem
-          with_items: "{{ ec22.instances }}"
+      - name: Add Build instance to host group
+        add_host:
+          hostname: "{{ item.public_ip_address }}"
+          groups: web
+          ansible_ssh_user: ubuntu
+          ansible_ssh_private_key_file: { { ec2_key_directory } }{ { code_name } }_ec2_keypair.pem
+        with_items: "{{ ec22.instances }}"
 
