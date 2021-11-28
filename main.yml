@@ -2,12 +2,12 @@
 - name: main
   vars_files:
     - var1.yml
+  tasks:
+    - name: create aws environment
+      import_tasks: makeaws.yml
 
-- name: create aws environment
-  import_tasks: makeaws.yml
+#- name: Make docker container with webserver and app
+#  import_tasks: makeapp.yml
 
-- name: Make docker container with webserver and app
-  import_tasks: makeapp.yml
-
-- name: Make docker container with webserver and app
-  import_tasks: deploy.yml
+#- name: Make docker container with webserver and app
+#  import_tasks: deploy.yml
