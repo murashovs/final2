@@ -40,7 +40,7 @@
 
     - name: Make docker image
       docker_image:
-        name: '{{ project_name }}'
+        name: '{{ dockerhub_username }}/{{ project_name }}'
         push: yes
         build:
           path: /home/ubuntu/src/target
