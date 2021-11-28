@@ -15,7 +15,7 @@
 
     - name: Pull docker image
       docker_image:
-        name: '{{ project_name }}:latest'
+        name: '{{ dockerhub_username }}/{{ project_name }}:latest'
         source: pull
 
     - name: run docker container
