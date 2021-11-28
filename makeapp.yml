@@ -31,10 +31,12 @@
         username: '{{ dockerhub_username }}'
         password: '{{ dockerhub_password }}'
 
-    - name: Synchronize Dockerfile.
-      synchronize:
-        src: Dockerfile
-        dest: /home/ubuntu/src/target
+    - name: create Dockerfile.
+      copy:
+        dest: /home/ubuntu/src/target/Dockerfile
+        content: |
+          "FROM tomcat:8.0-alpine"
+          "ADD hello-1.0.war /usr/local/tomcat/webapps/"
 
     - name: Make docker image
       docker_image:
