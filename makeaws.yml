@@ -123,7 +123,7 @@
         hostname: "{{ item.public_ip_address }}"
         groups: Builders
         ansible_ssh_user: ubuntu
-        ansible_ssh_private_key_file: '{{ ec2_key_directory }}{{ code_name }}_ec2_keypair.pem'
+        ansible_ssh_private_key_file: "{{ ec2_key_directory }}{{ code_name }}_ec2_keypair.pem"
       with_items: "{{ ec21.instances }}"
 
     - name: Create webserver
