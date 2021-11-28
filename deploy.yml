@@ -22,6 +22,6 @@
       docker_container:
         name: webapp
         state: started
-        image: '{{ project_name }}:latest'
+        image: '{{ dockerhub_username }}/{{ project_name }}:latest'
         ports:
           - "8080:8080"
