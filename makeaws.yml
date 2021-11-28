@@ -104,9 +104,8 @@
         group_id: "{{ security_group.group_id }}"
         vpc_subnet_id: "{{ subnet_1.subnet.id }}"
         key_name: "{{ project_name }}_ec2_keypair"
-        count_tag:
+        tags:
           Name: buikder
-        instance_tags:
           project_name: "{{ project_name }}"
         exact_count: 1
         aws_access_key: "{{ aws_access_key }}"
@@ -130,9 +129,8 @@
         group_id: "{{ security_group.group_id }}"
         vpc_subnet_id: "{{ subnet_1.subnet.id }}"
         key_name: "{{ project_name }}_ec2_keypair"
-        count_tag:
+        tags:
           Name: webserver
-        instance_tags:
           project_name: "{{ project_name }}"
         exact_count: 1
         aws_access_key: "{{ aws_access_key }}"
