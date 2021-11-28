@@ -97,7 +97,7 @@
 
     - name: Create APP builder
       ec2_instance:
-        image: '{{ ami }}'
+        image_id: '{{ ami }}'
         wait: yes
         instance_type: '{{ instant_type }}'
         region: "{{ region }}"
@@ -122,8 +122,8 @@
       with_items: "{{ ec21.instances }}"
 
     - name: Create webserver
-      ec2:
-        image: '{{ ami }}'
+      ec2_instance:
+        image_id: '{{ ami }}'
         wait: yes
         instance_type: '{{ instant_type }}'
         region: "{{ region }}"
