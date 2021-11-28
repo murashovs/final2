@@ -101,7 +101,7 @@
         wait: yes
         instance_type: '{{ instant_type }}'
         region: "{{ region }}"
-        group_id: "{{ security_group.group_id }}"
+        security_group: "{{ security_group.group_id }}"
         vpc_subnet_id: "{{ subnet_1.subnet.id }}"
         key_name: "{{ project_name }}_ec2_keypair"
         tags:
@@ -125,7 +125,7 @@
         wait: yes
         instance_type: '{{ instant_type }}'
         region: "{{ region }}"
-        group_id: "{{ security_group.group_id }}"
+        security_group: "{{ security_group.group_id }}"
         vpc_subnet_id: "{{ subnet_1.subnet.id }}"
         key_name: "{{ project_name }}_ec2_keypair"
         tags:
