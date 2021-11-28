@@ -15,7 +15,7 @@
 
     - name: Pull docker image
       docker_image:
-        name: murashovs/web:latest
+        name: '{{ project_name }}:latest'
         source: pull
 
     - name: run docker container
