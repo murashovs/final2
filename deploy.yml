@@ -1,12 +1,5 @@
 ---
 
-
-- name: Deploy tomcat and APP from container
-  hosts: web
-  become: yes
-  become_user: root
-
-  tasks:
     - name: Checkout pkgs is presents
       apt:
         pkg:

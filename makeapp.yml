@@ -1,11 +1,6 @@
 ---
 
-- name: Make war from sources
-  hosts: builder
-  become: yes
-  become_user: root
 
-  tasks:
     - name: Checkout pkgs is presents
       apt:
         pkg:

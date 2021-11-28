@@ -11,8 +11,24 @@
     - name: create aws environment
       import_tasks: makeaws.yml
 
+- name: Make war from sources
+  hosts: builder
+  become: yes
+  become_user: root
+  vars_files:
+    - var1.yml
+  tasks:
     - name: Make docker container with webserver and app
       import_tasks: makeapp.yml
+
+
+- name: Deploy tomcat and APP from container
+  hosts: web
+  become: yes
+  become_user: root
+  vars_files:
+    - var1.yml
+  tasks:
 
     - name: Make docker container with webserver and app
       import_tasks: deploy.yml
