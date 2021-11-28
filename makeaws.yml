@@ -107,7 +107,6 @@
         tags:
           Name: buikder
           project_name: "{{ project_name }}"
-        exact_count: 1
         aws_access_key: "{{ aws_access_key }}"
         aws_secret_key: "{{ aws_secret_key }}"
       register: ec21
@@ -132,7 +131,6 @@
         tags:
           Name: webserver
           project_name: "{{ project_name }}"
-        exact_count: 1
         aws_access_key: "{{ aws_access_key }}"
         aws_secret_key: "{{ aws_secret_key }}"
       register: ec22
