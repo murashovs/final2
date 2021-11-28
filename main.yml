@@ -1,5 +1,10 @@
 ---
-- name: main
+
+- name: install builder
+  hosts: localhost
+  connection: local
+ # become: yes
+  gather_facts: False
   vars_files:
     - var1.yml
   tasks:

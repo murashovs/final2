@@ -1,11 +1,6 @@
 ---
 
-- name: install builder
-  hosts: localhost
-  connection: local
- # become: yes
-  gather_facts: False
-  tasks:
+
 
     - name: create VPC
       ec2_vpc_net:
