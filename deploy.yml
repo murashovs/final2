@@ -15,13 +15,13 @@
 
     - name: Pull docker image
       docker_image:
-        name: '{{ dockerhub_username }}/{{ project_name }}:latest'
+        name: '{{ dockerhub_username }}/{{ project_name }}:{{ version }}'
         source: pull
 
     - name: run docker container
       docker_container:
         name: webapp
         state: started
-        image: '{{ dockerhub_username }}/{{ project_name }}:latest'
+        image: '{{ dockerhub_username }}/{{ project_name }}:{{ version }}'
         ports:
           - "8080:8080"

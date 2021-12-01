@@ -1,7 +1,5 @@
 ---
 
-
-
     - name: create VPC
       ec2_vpc_net:
         name: "{{ project_name }}_vpc"
