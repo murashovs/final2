@@ -3,10 +3,9 @@
 - name: install builder
   hosts: localhost
   connection: local
- # become: yes
   gather_facts: False
   vars_files:
-    - var1.yml
+    - var.yml
   tasks:
     - name: create aws environment
       import_tasks: makeaws.yml
