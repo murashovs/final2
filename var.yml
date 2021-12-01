@@ -6,10 +6,12 @@ project_name:
 region:
 vpc_cidr:
 subnet_az:
-subnet_cidr:
+subnet1_cidr:
+subnet2_cidr:
 ami:
 instant_type:
 git_repo:
 dockerhub_username:
 dockerhub_password:
 ec2_key_directory:
+version:

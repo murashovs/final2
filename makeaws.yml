@@ -14,12 +14,12 @@
           project_name: "{{ project_name }}"
       register: vpc
 
-    - name: associate subnet to the VPC
+    - name: associate subnet1 to the VPC
       ec2_vpc_subnet:
         vpc_id: "{{ vpc.vpc.id }}"
         region: "{{ region }}"
         az: "{{ subnet_az }}"
-        cidr: "{{ subnet_cidr }}"
+        cidr: "{{ subnet1_cidr }}"
         aws_access_key: "{{ aws_access_key }}"
         aws_secret_key: "{{ aws_secret_key }}"
         map_public: yes
@@ -27,6 +27,20 @@
         resource_tags:
           project_name: "{{ project_name }}"
       register: subnet_1
+
+    - name: associate subnet2 to the VPC
+      ec2_vpc_subnet:
+        vpc_id: "{{ vpc.vpc.id }}"
+        region: "{{ region }}"
+        az: "{{ subnet_az }}"
+        cidr: "{{ subnet2_cidr }}"
+        aws_access_key: "{{ aws_access_key }}"
+        aws_secret_key: "{{ aws_secret_key }}"
+        map_public: yes
+        state: present
+        resource_tags:
+          project_name: "{{ project_name }}"
+      register: subnet_2
 
     - name: create IGW
       ec2_vpc_igw:
@@ -47,6 +61,7 @@
         aws_secret_key: "{{ aws_secret_key }}"
         subnets:
           - "{{ subnet_1.subnet.id }}"
+          - "{{ subnet_2.subnet.id }}"
         routes:
           - dest: 0.0.0.0/0
             gateway_id: "{{ igw.gateway_id  }}"
@@ -126,7 +141,7 @@
         instance_type: '{{ instant_type }}'
         region: "{{ region }}"
         security_group: "{{ security_group.group_id }}"
-        vpc_subnet_id: "{{ subnet_1.subnet.id }}"
+        vpc_subnet_id: "{{ subnet_2.subnet.id }}"
         key_name: "{{ project_name }}_ec2_keypair"
         tags:
           Name: webserver
